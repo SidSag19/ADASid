@@ -128,4 +128,3 @@ Practical 1
 1. **Outer Recursion**: Traverses each element  of the array.
 2. **Inner Recursion**: Checks all elements from index  to .
 3. If a match is found, stop and return the index and value.
-
