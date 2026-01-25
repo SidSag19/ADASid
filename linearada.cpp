@@ -49,3 +49,29 @@ int main() {
 
     return 0;
 }
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// int linearSearchRecursive(const int arr[], int size, int target, int index) {
+//     if (index >= size) {
+//         return -1;
+//     }
+//     if (arr[index] == target) {
+//         return index;
+//     }
+//     return linearSearchRecursive(arr, size, target, index + 1);
+// }
+
+// int main() {
+//     int arr[] = {10, 20, 30, 40, 50};
+//     int size = 5;
+//     int target = 30;
+//     int result = linearSearchRecursive(arr, size, target, 0);
+    
+//     if (result != -1) cout << "Found at index: " << result << endl;
+//     else cout << "Not found." << endl;
+//     return 0;
+// }
+
+
