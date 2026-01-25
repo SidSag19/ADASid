@@ -48,3 +48,37 @@ int main() {
 
     return 0;
 }
+
+// #include <iostream>
+// #include <algorithm>
+// using namespace std;
+
+// int findMinIndex(int arr[], int start, int end) {
+//     int min_idx = start;
+//     for (int j = start + 1; j <= end; j++) {
+//         if (arr[j] < arr[min_idx]) {
+//             min_idx = j;
+//         }
+//     }
+//     return min_idx;
+// }
+
+// void selectionSortRecursive(int arr[], int n, int index = 0) {
+//     if (index >= n - 1) return;
+
+//     int min_idx = findMinIndex(arr, index, n - 1);
+
+//     if (min_idx != index) {
+//         swap(arr[index], arr[min_idx]);
+//     }
+
+//     selectionSortRecursive(arr, n, index + 1);
+// }
+
+// int main() {
+//     int arr[] = {29, 10, 14, 37, 13};
+//     int n = 5;
+//     selectionSortRecursive(arr, n);
+//     for (int i = 0; i < n; i++) cout << arr[i] << " ";
+//     return 0;
+// }
