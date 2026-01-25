@@ -129,8 +129,3 @@ Practical 1
 2. **Inner Recursion**: Checks all elements from index  to .
 3. If a match is found, stop and return the index and value.
 
-
-
----
-
-**Would you like me to create the `README.md` file content for you now so you can upload it to your GitHub repo?**
