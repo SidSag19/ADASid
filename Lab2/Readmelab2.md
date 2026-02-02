@@ -25,9 +25,9 @@ To implement and analyze a stable, in-place sorting algorithm that builds a sort
 
 | Case | Complexity |
 | --- | --- |
-| **Best Case** |  |
-| **Average Case** |  |
-| **Worst Case** |  |
+| **Best Case** | O(n) |
+| **Average Case** | O(n^2) |
+| **Worst Case** | O(n^2) |
 
 ---
 
@@ -56,10 +56,8 @@ To implement an efficient searching algorithm that finds a target element within
 
 | Case | Complexity |
 | --- | --- |
-| **Best Case** |  |
-| **Average Case** |  |
-| **Worst Case** |  |
+| **Best Case** | O(1) |
+| **Average Case** | O(logn) |
+| **Worst Case** | O(logn) |
 
 ---
-
-**Next Step:** Since your code uses a `time-based seed`, would you like me to help you add a section to this README to record the different execution times you get for different array sizes?
