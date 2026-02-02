@@ -30,19 +30,19 @@ void IS(int arr[], int n) {
 
 
 int main() {
-    const int SIZE = 10000;
+    const int SIZE = 100;
     int arr[SIZE];
     int copy_arr[SIZE]; // We'll keep a master copy to reset the array
     
     // Setup random engine with time-based seed
     unsigned seed = system_clock::now().time_since_epoch().count();
     mt19937 engine(seed);
-    uniform_int_distribution<int> dist(1, 100000);
+    uniform_int_distribution<int> dist(1, 100);
 
     // Fill the master copy with random numbers
     generate(begin(copy_arr), end(copy_arr), [&]() { return dist(engine); });
 
-    const int ITERATIONS = 100; // Lower iterations because sorting is slower than searching
+    const int ITERATIONS = 1000; // Lower iterations because sorting is slower than searching
     auto start = high_resolution_clock::now();
 
     for(int i = 0; i < ITERATIONS; i++) {

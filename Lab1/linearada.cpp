@@ -16,7 +16,7 @@ int linearSearch(const int arr[], int size, int target) {
 }
 
 int main() {
-    const int SIZE = 50000;
+    const int SIZE = 1000;
     static int arr[SIZE];
     
     // random_device rd;
@@ -27,7 +27,7 @@ int main() {
     generate(begin(arr), end(arr), [&]() { return dist(engine); });
 
     int search_elem;
-    cout << "Enter element to search (1-100000): ";
+    cout << "Enter element to search: ";
     cin >> search_elem;
 
     const int ITERATIONS = 1000;
@@ -45,7 +45,7 @@ int main() {
     if (resultIndex != -1) cout << "Found at index: " << resultIndex << endl;
     else cout << "Not found." << endl;
 
-    cout << "Average time per search: " << average_duration << " micros" << endl;
+    cout << "Average time per search: " << average_duration << " microseconds" << endl;
 
     return 0;
 }
