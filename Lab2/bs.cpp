@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <chrono>
 
+//time measured in nanoseconds
 using namespace std;
 using namespace std::chrono;
 

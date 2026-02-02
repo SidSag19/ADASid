@@ -53,7 +53,7 @@ To implement an efficient searching algorithm that finds a target element within
 * **Dictionary Lookups:** The standard method for looking up terms in ordered indices.
 
 ### **Time Complexity**
-
+//Time Measured in Nanoseconds
 | Case | Complexity |
 | --- | --- |
 | **Best Case** | O(1) |
