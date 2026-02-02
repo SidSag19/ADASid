@@ -45,7 +45,7 @@ int main() {
     if (resultIndex != -1) cout << "Found at index: " << resultIndex << endl;
     else cout << "Not found." << endl;
 
-    cout << "Average time per search: " << average_duration << " ms" << endl;
+    cout << "Average time per search: " << average_duration << " micros" << endl;
 
     return 0;
 }

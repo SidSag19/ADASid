@@ -20,7 +20,7 @@ void selectionSort(int arr[], int n) {
 }
 
 int main() {
-    const int SIZE = 100; 
+    const int SIZE = 10000; 
     static int arr[SIZE];
     static int copy_arr[SIZE]; 
     
