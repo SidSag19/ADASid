@@ -18,7 +18,7 @@ Practical 1
 * **Aim**: To calculate the total number of bounces a ball makes until its velocity falls below a threshold (1 unit).
 * **Use Case**: Physics simulations and game engines to model energy loss and damping effects.
 * **Algorithm**:
-1. **Base Case**: If velocity , return the current count .
+1. **Base Case**: If velocity<=1 , return the current count .
 2. **Recursive Step**: Multiply velocity by the restitution factor (0.575) and increment .
 3. Return the result of the next recursive call.
 
@@ -26,15 +26,15 @@ Practical 1
 
 ---
 
-### 3. Binary Exponentiation (Fast Power)
+### 3. Binary Exponentiation (Fast Approach)
 
 * **Aim**: To calculate  efficiently using the "divide and conquer" approach.
-* **Use Case**: Cryptography (RSA), competitive programming, and handling large exponent calculations where  is too slow.
+* **Use Case**: Competitive programming, and handling large exponent calculations.
 * **Algorithm**:
-1. **Base Case**: If , return 1.
-2. Calculate .
-3. **If  is even**: Return .
-4. **If  is odd**: Return .
+1. **Base Case**:if (b==0) return 1;
+2. Calculate int half=power(a,b/2);.
+3. **If  is even**: return half*half .
+4. **If  is odd**: return a*half*half .
 
 
 
@@ -74,8 +74,10 @@ Practical 1
 * **Aim**: To evaluate a polynomial  at a specific value  using the minimum number of multiplications.
 * **Use Case**: Efficiently calculating polynomial values in graphics and digital signal processing.
 * **Algorithm**:
-1. **Base Case**: If at the last coefficient, return it.
-2. **Recursive Step**: Current coefficient   result of the next recursive call (moving towards the constant term).
+1. **Base Case**: if (n == poly.size() - 1) {
+        return poly[n]; }
+    
+2. **Recursive Step**: return poly[n] + x * hornerRecursive(poly, n + 1, x);
 
 
 
