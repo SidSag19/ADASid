@@ -33,7 +33,7 @@ void mergeSort(int arr[], int temp[], int low, int high) {
 }
 
 int main() {
-    const int SIZE = 50000; // Same size as your test
+    const int SIZE = 50000;
     int arr[SIZE];
     int copy_arr[SIZE];
     int temp[SIZE]; // Allocated ONCE, here on the stack
