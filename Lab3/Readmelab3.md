@@ -34,9 +34,9 @@ To implement a highly efficient, in-place sorting algorithm that uses a divide-a
 
 | Case | Complexity |
 | --- | --- |
-| **Best Case** |  |
-| **Average Case** |  |
-| **Worst Case** |  |
+| **Best Case** | O(nlog n) |
+| **Average Case** | O(nlog n) |
+| **Worst Case** | O(n^2) |
 
 ---
 
@@ -61,13 +61,11 @@ To implement a **stable** sorting algorithm that guarantees  performance by recu
 ### **Use Case**
 
 * **Consistent Performance:** Guaranteed  time regardless of data distribution (no "bad pivot" risks).
-* **Stable Sorting:** Preserves the relative order of equal elements (essential for multi-key sorting).
-* **Linked Lists:** The most efficient algorithm for sorting linked lists as it relies on pointers rather than random access.
 
 ### **Time Complexity**
 
 | Case | Complexity |
 | --- | --- |
-| **Best Case** |  |
-| **Average Case** |  |
-| **Worst Case** |  |
+| **Best Case** | O(nlog n) |
+| **Average Case** | O(nlog n) |
+| **Worst Case** | O(nlog n) |
