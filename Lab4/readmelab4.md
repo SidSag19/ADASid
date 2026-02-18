@@ -1,8 +1,6 @@
-Here is the `README.md` content formatted exactly according to your template for the three algorithms you requested.
-
 # Lab 4
 
-## 1. Iterative Quick Sort (`qs_iterative.cpp`)
+## 1. Iterative Quick Sort (`qs.cpp`)
 
 ### **Aim**
 
@@ -118,7 +116,7 @@ To generate all possible permutations of a given string using **backtracking** b
 
 ### **Recurrence Relation**
 
-The time complexity is defined by the recurrence:
+The time complexity is defined by the recurrence: T(n)=n*T(n-1) + O(1)
 
 
 
@@ -133,6 +131,6 @@ Where the solution is o(n*n!).
 
 | Case | Complexity |
 | --- | --- |
-| **Best Case** | n*n! |
-| **Average Case** | n*n! |
-| **Worst Case** | n*n! |
+| **Best Case** | O(n*n!) |
+| **Average Case** | O(n*n!) |
+| **Worst Case** | O(n*n!) |
