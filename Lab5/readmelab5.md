@@ -1,11 +1,4 @@
-Here you go! You can just click the copy button in the top right corner of the block below and paste it directly into your `README.md` file.
-
 ```markdown
-# Algorithm Laboratory Experiments
-
-This repository contains C++ implementations of four classic algorithmic problems, demonstrating Greedy strategies, Divide and Conquer techniques, and Partitioning algorithms.
-
----
 
 ## Experiment 1: Fractional Knapsack Problem
 * **Aim:** To solve the Fractional Knapsack problem by maximizing the total profit without exceeding the bag's weight capacity. 
@@ -49,3 +42,5 @@ This repository contains C++ implementations of four classic algorithmic problem
   3. As the recursion unwinds, combine the results by comparing the minimums and maximums of the left and right halves to find the absolute extremes.
 * **Time Complexity:** $O(n)$ (Specifically, it reduces the total number of comparisons to $\frac{3n}{2} - 2$, which is mathematically faster than two separate linear scans).
 * **Use Case:** Establishing bounding boxes for computer graphics, setting dynamic axes in data visualization charts, and fast sensor data analysis.
+
+```
