@@ -75,7 +75,7 @@ This repository contains C++ implementations of fundamental graph and greedy alg
 
 * **Use Case:** Verifying network topologies to prevent infinite routing loops, and serving as a helper function inside Kruskal's Algorithm.
 * **Time Complexity:**
-* **Best / Average / Worst Case:** `O(E * α(V))` where `E` is the number of edges and `α` is the Inverse Ackermann function. Because `α(V)` is extremely small (effectively $\le 4$ for any realistically sized graph), the complexity is considered nearly linear `O(E)`.
+* **Best / Average / Worst Case:** `O(V)` where `E` is the number of edges (Per Edge Check).
 
 
 
@@ -95,7 +95,7 @@ This repository contains C++ implementations of fundamental graph and greedy alg
 
 * **Use Case:** Clustering algorithms in data science, image segmentation, and laying out printed circuit boards (PCBs).
 * **Time Complexity:**
-* **Best / Average / Worst Case:** `O(E log E)` or `O(E log V)`. The dominant factor is the time taken to sort the edges initially. The DSU operations take near-constant time.
+* **Best / Average / Worst Case:** `O(E log E)` or `O(E log V)`. The dominant factor is the time taken to sort the edges initially. The DSU operations take near-constant time.If doing DFS then `O(E*V)`
 
 
 

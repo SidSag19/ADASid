@@ -4,82 +4,54 @@
 
 using namespace std;
 
-// Structure to represent an edge
 struct Edge {
     int u, v, weight;
     
-    // Operator overloading for the priority queue to act as a Min-Heap
     bool operator>(const Edge& other) const {
         return weight > other.weight;
     }
 };
 
-// Disjoint Set Union (DSU) Data Structure for Cycle Detection
-struct DSU {
-    vector<int> parent;
-    vector<int> rank;
+bool isReachable(int curr, int target, vector<bool>& visited, const vector<vector<int>>& adj) {
+    if (curr == target) return true; 
+    
+    visited[curr] = true;
 
-    DSU(int n) {
-        parent.resize(n);
-        rank.resize(n, 0);
-        for (int i = 0; i < n; i++) {
-            parent[i] = i; 
-        }
-    }
-
-    int findSet(int i) {
-        if (parent[i] == i)
-            return i;
-        return parent[i] = findSet(parent[i]); 
-    }
-
-    void unite(int u, int v) {
-        int root_u = findSet(u);
-        int root_v = findSet(v);
-
-        if (root_u != root_v) {
-            if (rank[root_u] < rank[root_v]) {
-                parent[root_u] = root_v;
-            } else if (rank[root_u] > rank[root_v]) {
-                parent[root_v] = root_u;
-            } else {
-                parent[root_v] = root_u;
-                rank[root_u]++;
+    for (int neighbor : adj[curr]) {
+        if (!visited[neighbor]) {
+            if (isReachable(neighbor, target, visited, adj)) {
+                return true;
             }
         }
     }
-};
+    return false; 
+}
 
-// Kruskal's Algorithm implementation
-void kruskal(int V, const vector<Edge>& edges) {
-    // 1. Initialize Min-Heap and push all edges into it
+void kruskalDFS(int V, const vector<Edge>& edges) {
     priority_queue<Edge, vector<Edge>, greater<Edge>> minHeap;
     for (const auto& edge : edges) {
         minHeap.push(edge);
     }
 
-    DSU dsu(V);
+    vector<vector<int>> mstAdj(V); 
     vector<Edge> mst;
     int minCost = 0;
 
-    // 2. Extract edges from Min-Heap until we have V-1 edges in our MST
     while (!minHeap.empty() && mst.size() < V - 1) {
-        // Get the edge with the minimum weight
         Edge currentEdge = minHeap.top();
         minHeap.pop();
 
-        // 3. Cycle Detection: Check if adding this edge forms a cycle
-        if (dsu.findSet(currentEdge.u) != dsu.findSet(currentEdge.v)) {
-            // No cycle formed, include it in the MST
+        vector<bool> visited(V, false);
+
+        if (!isReachable(currentEdge.u, currentEdge.v, visited, mstAdj)) {
             mst.push_back(currentEdge);
             minCost += currentEdge.weight;
             
-            // Union the two sets
-            dsu.unite(currentEdge.u, currentEdge.v);
+            mstAdj[currentEdge.u].push_back(currentEdge.v);
+            mstAdj[currentEdge.v].push_back(currentEdge.u);
         }
     }
 
-    // Output the resulting Minimum Spanning Tree
     cout << "Edges in the Minimum Spanning Tree (MST):\n";
     cout << "-----------------------------------------\n";
     for (const auto& edge : mst) {
@@ -90,9 +62,8 @@ void kruskal(int V, const vector<Edge>& edges) {
 }
 
 int main() {
-    int V = 6; // Number of vertices (0 to 5)
+    int V = 6; 
     
-    // Sample Graph Edges {u, v, weight}
     vector<Edge> edges = {
         {0, 1, 4},
         {0, 2, 4},
@@ -105,7 +76,7 @@ int main() {
         {4, 5, 8}
     };
 
-    kruskal(V, edges);
+    kruskalDFS(V, edges);
 
     return 0;
 }

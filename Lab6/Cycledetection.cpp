@@ -3,56 +3,32 @@
 
 using namespace std;
 
-struct DSU {
-    vector<int> parent;
-    vector<int> rank;
+bool dfs(int node, int parent, vector<bool>& visited, const vector<vector<int>>& adj) {
+    visited[node] = true;
 
-    DSU(int n) {
-        parent.resize(n);
-        rank.resize(n, 0);
-        for (int i = 0; i < n; i++) {
-            parent[i] = i;
+    for (int neighbor : adj[node]) {
+        if (!visited[neighbor]) {
+            if (dfs(neighbor, node, visited, adj)) {
+                return true; 
+            }
+        } 
+        else if (neighbor != parent) {
+            return true;
         }
     }
+    return false;
+}
 
-    int findSet(int i) {
-        if (parent[i] == i)
-            return i;
-        return parent[i] = findSet(parent[i]); 
-    }
+bool hasCycle(int V, const vector<vector<int>>& adj) {
+    vector<bool> visited(V, false);
 
-    void unite(int u, int v) {
-        int root_u = findSet(u);
-        int root_v = findSet(v);
-
-        if (root_u != root_v) {
-            if (rank[root_u] < rank[root_v]) {
-                parent[root_u] = root_v;
-            } else if (rank[root_u] > rank[root_v]) {
-                parent[root_v] = root_u;
-            } else {
-                parent[root_v] = root_u;
-                rank[root_u]++;
+    for (int i = 0; i < V; i++) {
+        if (!visited[i]) {
+            if (dfs(i, -1, visited, adj)) {
+                return true;
             }
         }
     }
-};
-
-bool hasCycle(int V, const vector<pair<int, int>>& edges) {
-    DSU dsu(V);
-
-    for (int i = 0; i < edges.size(); i++) {
-        int u = edges[i].first;
-        int v = edges[i].second;
-
-        if (dsu.findSet(u) != dsu.findSet(v)) {
-            dsu.unite(u, v);
-        } else {
-            cout << "Cycle detected at edge (" << u << ", " << v << ")\n";
-            return true; 
-        }
-    }
-    
     return false;
 }
 
@@ -60,27 +36,26 @@ int main() {
     int V = 4;
 
     cout << "--- Graph 1 ---" << endl;
-    vector<pair<int, int>> edges1 = {
-        {0, 1}, 
-        {1, 2}, 
-        {2, 0},
-        {2, 3}
-    };
+    vector<vector<int>> adj1(V);
+    adj1[0] = {1, 2};
+    adj1[1] = {0, 2};
+    adj1[2] = {0, 1, 3};
+    adj1[3] = {2};
 
-    if (hasCycle(V, edges1)) {
+    if (hasCycle(V, adj1)) {
         cout << "Result: Graph 1 contains a cycle.\n\n";
     } else {
         cout << "Result: Graph 1 does not contain a cycle.\n\n";
     }
 
     cout << "--- Graph 2 ---" << endl;
-    vector<pair<int, int>> edges2 = {
-        {0, 1}, 
-        {1, 2}, 
-        {2, 3}
-    };
+    vector<vector<int>> adj2(V);
+    adj2[0] = {1};
+    adj2[1] = {0, 2};
+    adj2[2] = {1, 3};
+    adj2[3] = {2};
 
-    if (hasCycle(V, edges2)) {
+    if (hasCycle(V, adj2)) {
         cout << "Result: Graph 2 contains a cycle.\n";
     } else {
         cout << "Result: Graph 2 does not contain a cycle.\n";
