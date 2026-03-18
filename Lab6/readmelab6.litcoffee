@@ -81,22 +81,24 @@ This repository contains C++ implementations of fundamental graph and greedy alg
 
 ---
 
-## 5. Kruskal's Algorithm
+Here is the complete, updated section for Kruskal's Algorithm using the DFS approach, formatted perfectly for your README file. You can copy and paste this directly:
+
+---
+
+## 5. Kruskal's Algorithm (DFS Variation for Cycle Detection)
 
 * **Aim:** To find the Minimum Spanning Tree (MST) of a connected, undirected, and weighted graph using an edge-based greedy approach.
 * **Algorithm:**
-1. Sort all edges in the graph in non-decreasing order of their weight (often done efficiently using a Min-Heap).
-2. Initialize a Disjoint Set Union (DSU) structure to keep track of connected components.
-3. Pick the smallest edge. Check if adding it forms a cycle using the DSU `find` operation.
-4. If it does not form a cycle, include it in the MST and `union` the sets.
-5. If it forms a cycle, discard the edge.
-6. Repeat until the MST contains exactly `V-1` edges.
-
-
-* **Use Case:** Clustering algorithms in data science, image segmentation, and laying out printed circuit boards (PCBs).
+    1. Sort all edges in the graph in non-decreasing order of their weight (often done efficiently using a Min-Heap).
+    2. Initialize an empty Adjacency List to keep track of the edges you have safely added to your in-progress Minimum Spanning Tree (MST).
+    3. Pick the smallest available edge `(u, v)`. Use a Depth-First Search (DFS) on your *current* MST Adjacency List to check if a path already exists between vertex `u` and vertex `v`.
+    4. If no path exists, adding the edge will not form a cycle. Include it in your final MST and permanently add the connection to your MST Adjacency List.
+    5. If a path already exists, adding the edge would create a closed loop. Discard the edge.
+    6. Repeat until the MST contains exactly `V-1` edges. 
+* **Use Case:** While Kruskal's logic is used in clustering algorithms and network design, this specific **DFS variation** is primarily an educational tool. It is excellent for understanding graph traversals and tree-building logic, though not recommended for massive production databases. 
 * **Time Complexity:**
-* **Best / Average / Worst Case:** `O(E log E)` or `O(E log V)`. The dominant factor is the time taken to sort the edges initially. The DSU operations take near-constant time.If doing DFS then `O(E*V)`
-
-
+    * **Best / Average / Worst Case:** `O(E * V)` (where `E` is the number of edges and `V` is the number of vertices). 
+    * **Why it changed:** Sorting the edges initially takes `O(E log E)`. However, in the worst-case scenario, you must evaluate all `E` edges. For each edge, the DFS must physically walk through the in-progress tree to check for a path, which takes `O(V)` time. Because `O(E * V)` grows much faster than `O(E log E)`, the DFS cycle-checking phase becomes the mathematical bottleneck.
 
 ---
+
