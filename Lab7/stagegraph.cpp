@@ -1,5 +1,9 @@
 #include <iostream>
+#include <chrono> 
+
 using namespace std;
+using namespace std::chrono; 
+
 #define lar 100000 
 
 struct g {
@@ -36,7 +40,7 @@ struct g {
         cout << "Total number of stages: " << count+1 << endl;
     }
 
-    void FMG(int n, int k) {
+    void FMG(int n, int k, bool print_output = true) {
         int mcost[20];
         int d[20];
         int p[20];
@@ -56,19 +60,23 @@ struct g {
             mcost[j] = min_cost;
             d[j] = min_r;
         }
+        
         p[1] = 0;
         p[k] = n - 1;
 
         for (int j = 2; j <= k - 1; j++) {
             p[j] = d[p[j - 1]];
         }
-        cout << "\nMinimum Cost: " << mcost[0] << endl;
-        cout << "Path: ";
-        for (int i = 1; i <= k; i++) {
-            cout << p[i];
-            if (i < k) cout << " -> ";
+        
+        if (print_output) {
+            cout << "\nMinimum Cost: " << mcost[0] << endl;
+            cout << "Path: ";
+            for (int i = 1; i <= k; i++) {
+                cout << p[i];
+                if (i < k) cout << " -> ";
+            }
+            cout << endl;
         }
-        cout << endl;
     }
 };
 
@@ -87,6 +95,16 @@ int main() {
     cout << "Adjacency Matrix:\n";
     a.display();    
     a.count(a.arr, 7);
-    a.FMG(7, 4);
+    auto start = high_resolution_clock::now();
+    
+    int iterations = 100000;
+    for(int k = 0; k < iterations; k++) {
+        a.FMG(7, 4, false); 
+    }
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(end - start);
+    cout << "Average time per FMG run: " << duration.count() / iterations << " ns\n";
+    a.FMG(7, 4, true);
+    
     return 0;
 }
