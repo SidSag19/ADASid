@@ -38,35 +38,37 @@ struct g {
         }
         cout << "Total number of stages: " << count+1 << endl;}
 
-    void FMG(int n, int k, bool print_output = true) {
+    void FMG_Forward(int n, int k, bool print_output = true) {
         int mcost[20];
         int d[20];
         int p[20];
-        mcost[n - 1] = 0;
+        
+        mcost[0] = 0;
 
-        for (int j = n - 2; j >= 0; j--) {
+        for (int j = 1; j < n; j++) {
             int min_cost = lar;
-            int min_r = -1;
-            for (int r = j + 1; r < n; r++) {
-                if (arr[j][r] != 0) {
-                    if (arr[j][r] + mcost[r] < min_cost) {
-                        min_cost = arr[j][r] + mcost[r];
-                        min_r = r;
+            int min_predecessor = -1;
+            
+            for (int i = 0; i < j; i++) {
+                if (arr[i][j] != 0) {
+                    if (arr[i][j] + mcost[i] < min_cost) {
+                        min_cost = arr[i][j] + mcost[i];
+                        min_predecessor = i;
                     }
                 }
             }
             mcost[j] = min_cost;
-            d[j] = min_r;
+            d[j] = min_predecessor;
         }
         
-        p[1] = 0;
-        p[k] = n - 1;
+        p[1] = 0;         
+        p[k] = n - 1;     
 
-        for (int j = 2; j <= k - 1; j++) {
-            p[j] = d[p[j - 1]];}
+        for (int j = k - 1; j >= 2; j--) {
+            p[j] = d[p[j + 1]];}
         
         if (print_output) {
-            cout << "\nMinimum Cost: " << mcost[0] << endl;
+            cout << "\nMinimum Cost: " << mcost[n - 1] << endl;
             cout << "Path: ";
             for (int i = 1; i <= k; i++) {
                 cout << p[i];
@@ -92,16 +94,19 @@ int main() {
     cout << "Adjacency Matrix:\n";
     a.display();    
     a.count(a.arr, 7);
+    
     auto start = high_resolution_clock::now();
     
     int iterations = 100000;
     for(int k = 0; k < iterations; k++) {
-        a.FMG(7, 4, false); 
+        a.FMG_Forward(7, 4, false); 
     }
+    
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<nanoseconds>(end - start);
-    cout << "Average time per FMG run: " << duration.count() / iterations << " ns\n";
-    a.FMG(7, 4, true);
+    cout << "Average time per Forward FMG run: " << duration.count() / iterations << " ns\n";
+    
+    a.FMG_Forward(7, 4, true);
     
     return 0;
 }
