@@ -1,7 +1,3 @@
-Just a quick heads-up: the text you provided actually perfectly describes the **Backward Approach** (since it initializes the destination to `0` and loops backward down to the source).
-
-I have corrected the title for your original text below and written out the true **Forward Approach** (which builds from the source to the destination) in the exact same format so you have a complete, accurate set\!
-
 # Multi-Stage Graph: Shortest Path (Forward Approach)
 
 ### Aim
