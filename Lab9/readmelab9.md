@@ -1,9 +1,3 @@
-# Advanced Algorithms Repository
-
-This repository contains C++ implementations of three classic Dynamic Programming algorithms: Floyd-Warshall (All-Pairs Shortest Path), Longest Common Subsequence (LCS), and the Traveling Salesperson Problem (TSP).
-
----
-
 ## 1. Floyd-Warshall Algorithm (`fw.cpp`)
 
 ### **Aim**

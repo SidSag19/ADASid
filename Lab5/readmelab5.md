@@ -1,12 +1,3 @@
-
----
-
-# Algorithm Laboratory Experiments
-
-This repository contains C++ implementations of four classic algorithmic problems, demonstrating Greedy strategies, Divide and Conquer techniques, and Partitioning algorithms.
-
----
-
 ## Experiment 1: Fractional Knapsack Problem
 
 **Aim:** To solve the Fractional Knapsack problem by maximizing the total profit without exceeding the bag's weight capacity.
