@@ -57,3 +57,25 @@ To find the absolute shortest possible route that visits a set of cities exactly
 ### **Time Complexity**
 * **Time Complexity:** $O(n^2 \times 2^n)$, where $n$ is the number of cities. (This is significantly faster than the naive $O(n!)$ approach).
 * **Space Complexity:** $O(n \times 2^n)$ to store the memoization table.
+
+---
+
+## 4. 0/1 Knapsack Problem (`01ks.cpp`)
+
+### **Aim**
+To solve the 0/1 Knapsack problem using Dynamic Programming, finding the maximum total value of items that can be packed into a knapsack of a given capacity without exceeding the weight limit.
+
+### **Algorithm in Short**
+1. It creates a 2D grid (`V[][]`), where rows represent the items available to choose from, and columns represent the current weight capacity of the knapsack (from $0$ up to the maximum limit $W$).
+2. It iterates through the items. For each item and each weight limit, it makes a choice:
+   * **Exclude the item:** Carry forward the maximum value obtained without this item (`V[i - 1][j]`).
+   * **Include the item:** Add the item's value to the maximum value achievable with the remaining capacity (`val[i - 1] + V[i - 1][j - wt[i - 1]]`).
+3. It takes the maximum of those two choices and stores it in the cell. The final answer (the absolute maximum value) is found in the bottom-right cell of the grid.
+
+### **Use Cases**
+* **Resource Allocation:** Financial planning where you have a limited budget (capacity) and want to invest in projects that yield the highest return (value).
+* **Cargo Loading:** Selecting which items or containers to load onto an airplane or shipping vessel to maximize profit while strictly adhering to weight restrictions.
+
+### **Time Complexity**
+* **Time Complexity:** $O(n \times W)$, where $n$ is the number of items and $W$ is the maximum weight capacity of the knapsack.
+* **Space Complexity:** $O(n \times W)$ to store the 2D dynamic programming grid.
