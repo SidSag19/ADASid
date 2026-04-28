@@ -78,11 +78,6 @@ This repository contains C++ implementations of fundamental graph and greedy alg
 * **Best / Average / Worst Case:** `O(V)` where `E` is the number of edges (Per Edge Check).
 
 
-
----
-
-Here is the complete, updated section for Kruskal's Algorithm using the DFS approach, formatted perfectly for your README file. You can copy and paste this directly:
-
 ---
 
 ## 5. Kruskal's Algorithm (DFS Variation for Cycle Detection)
