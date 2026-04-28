@@ -1,8 +1,4 @@
-Here is the text for your Lab 10 Readme:
-
 # Lab 10
-
-This lab implements classic computer science problems using the **Backtracking** algorithmic paradigm. Below is the documentation for each C++ file included in this lab.
 
 ---
 
