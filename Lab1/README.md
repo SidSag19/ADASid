@@ -4,10 +4,10 @@ Practical 1
 * **Aim**: To move a stack of  disks from one rod to another following specific constraints (only one disk moves at a time and no larger disk sits on a smaller one).
 * **Use Case**: Solving logical puzzles, studying recursive sub-problems, and understanding exponential time complexity ().
 * **Algorithm**:
-1. **Base Case**: If , move the disk directly from Source to Target.
-2. **Recursive Step**: Move  disks from Source to Auxiliary.
-3. Move the  disk from Source to Target.
-4. Move the  disks from Auxiliary to Target.
+1. **Base Case**: If n == 1, move the disk directly from Source to Target.
+2. **Recursive Step**: Move n - 1 disks from Source to Auxiliary.
+3. Move the nth (largest) disk from Source to Target.
+4. Move the n - 1 disks from Auxiliary to Target.
 
 
 
